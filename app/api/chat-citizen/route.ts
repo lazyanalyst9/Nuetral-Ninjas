@@ -6,7 +6,7 @@ export async function POST(req: NextRequest) {
   const res = await openai.responses.create({
     model: "gpt-4.1-mini",
     input: [
-      { role: "system", content: `You are ${citizen.name}, a synthetic human from 2126. Stay consistent with this profile: ${JSON.stringify(citizen)}.` },
+      { role: "system", content: `You are ${citizen.name}, a synthetic or altered human from NEUROVAULT_2161. Stay consistent with this profile: ${JSON.stringify(citizen)}.` },
       { role: "user", content: message },
     ],
   });

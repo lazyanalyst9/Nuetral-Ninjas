@@ -1,8 +1,12 @@
 import { NextResponse } from "next/server";
-import { generateStructuredJSON } from "@/lib/openai";
-import { FuturePost } from "@/types";
+import { seedStreams } from "@/lib/demoData";
+import { generateViaNeurovault } from "@/lib/pipeshift";
+import { ConsciousnessStream } from "@/types";
 
 export async function POST() {
-  const feed = await generateStructuredJSON<FuturePost[]>("Generate 5 future internet posts with fields: username,platform,post,comments[],sentiment,year.");
+  const feed = await generateViaNeurovault<ConsciousnessStream[]>(
+    "Generate 5 NEUROVAULT_2161 consciousness streams. Return an array.",
+    seedStreams
+  );
   return NextResponse.json(feed);
 }

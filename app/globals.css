@@ -9,3 +9,193 @@ body {
 .glass {
   @apply bg-slate-900/40 border border-cyan-200/20 backdrop-blur-md rounded-xl;
 }
+
+.glass-panel {
+  @apply rounded-2xl border border-cyan-200/15 bg-slate-900/45 shadow-2xl shadow-slate-950/40 backdrop-blur-xl;
+}
+
+::selection {
+  background: rgba(125, 211, 252, 0.28);
+}
+
+.scanlines {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.035),
+    rgba(255, 255, 255, 0.035) 1px,
+    transparent 1px,
+    transparent 8px
+  );
+  mix-blend-mode: screen;
+}
+
+.section-vault {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(248, 113, 113, 0.12), transparent 28%),
+    linear-gradient(135deg, rgba(15, 23, 42, 0.72), rgba(2, 6, 23, 0.82));
+}
+
+.section-population {
+  background:
+    radial-gradient(circle at 85% 0%, rgba(125, 211, 252, 0.16), transparent 24%),
+    linear-gradient(160deg, rgba(15, 23, 42, 0.6), rgba(49, 46, 129, 0.18));
+}
+
+.section-market {
+  perspective: 1200px;
+}
+
+.panel-streams {
+  background:
+    linear-gradient(140deg, rgba(8, 47, 73, 0.36), rgba(2, 6, 23, 0.78)),
+    repeating-linear-gradient(120deg, rgba(125, 211, 252, 0.05) 0 1px, transparent 1px 22px);
+}
+
+.panel-terminal {
+  background: radial-gradient(circle at 15% 0%, rgba(34, 197, 94, 0.12), transparent 30%), rgba(2, 6, 23, 0.72);
+}
+
+.panel-religion {
+  background: radial-gradient(circle at 100% 0%, rgba(168, 85, 247, 0.16), transparent 32%), rgba(15, 23, 42, 0.55);
+}
+
+.panel-alerts,
+.panel-forbidden {
+  background: radial-gradient(circle at 0% 0%, rgba(248, 113, 113, 0.18), transparent 34%), rgba(15, 23, 42, 0.5);
+}
+
+.panel-graph {
+  background: radial-gradient(circle at 50% 50%, rgba(125, 211, 252, 0.12), transparent 40%), rgba(2, 6, 23, 0.66);
+}
+
+.panel-timeline {
+  background: linear-gradient(180deg, rgba(49, 46, 129, 0.22), rgba(2, 6, 23, 0.72));
+}
+
+.panel-pitch {
+  background: linear-gradient(135deg, rgba(125, 211, 252, 0.12), rgba(139, 92, 246, 0.14), rgba(2, 6, 23, 0.8));
+}
+
+.floating-card {
+  transform-style: preserve-3d;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.floating-card:hover {
+  transform: translateY(-4px) rotateX(1.5deg);
+  box-shadow: 0 18px 55px rgba(125, 211, 252, 0.1);
+}
+
+.corrupt-text h1,
+.corrupt-text h2,
+.corrupt-text h3 {
+  text-shadow: 2px 0 rgba(248, 113, 113, 0.6), -2px 0 rgba(125, 211, 252, 0.45);
+}
+
+.glitch {
+  animation: glitch-shift 1.6s infinite steps(2, end);
+}
+
+.red-alert .glass-panel {
+  border-color: rgba(248, 113, 113, 0.32);
+  box-shadow: 0 0 50px rgba(248, 113, 113, 0.08);
+}
+
+.citizen-card:hover {
+  filter: hue-rotate(18deg) saturate(1.35);
+  clip-path: polygon(0 0, 96% 0, 100% 12%, 100% 100%, 4% 100%, 0 88%);
+}
+
+.terminal {
+  box-shadow: inset 0 0 30px rgba(34, 197, 94, 0.08);
+}
+
+.typewriter-line {
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: type-line 700ms steps(38, end) forwards;
+}
+
+.neural-scan::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, rgba(125, 211, 252, 0.12), transparent);
+  animation: scan-pass 2.4s linear infinite;
+}
+
+.stream-card {
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.stream-card:hover {
+  filter: contrast(1.2) saturate(1.35);
+}
+
+.red-alert::after {
+  content: "EMERGENCY OVERRIDE // ARCHIVE IS WATCHING YOU";
+  position: fixed;
+  inset: 0;
+  z-index: 35;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+  color: rgba(248, 113, 113, 0.16);
+  font-size: clamp(2rem, 8vw, 8rem);
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: 0.12em;
+  animation: red-overlay 1.3s infinite;
+}
+
+@keyframes glitch-shift {
+  0%, 100% {
+    transform: translate(0);
+  }
+  25% {
+    transform: translate(1px, -1px);
+  }
+  50% {
+    transform: translate(-1px, 1px);
+  }
+  75% {
+    transform: translate(2px, 0);
+  }
+}
+
+@keyframes type-line {
+  0% {
+    opacity: 0;
+    width: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    width: 100%;
+  }
+}
+
+@keyframes scan-pass {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes red-overlay {
+  0%, 100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.08;
+  }
+}

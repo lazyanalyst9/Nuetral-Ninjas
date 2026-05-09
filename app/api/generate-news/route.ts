@@ -1,8 +1,12 @@
 import { NextResponse } from "next/server";
-import { generateStructuredJSON } from "@/lib/openai";
-import { FutureNews } from "@/types";
+import { seedForbiddenFiles } from "@/lib/demoData";
+import { generateViaNeurovault } from "@/lib/pipeshift";
+import { ForbiddenFile } from "@/types";
 
 export async function POST() {
-  const news = await generateStructuredJSON<FutureNews>("Generate one 2126 news article with fields: headline,summary,affectedGroups[],socialImpact,economicImpact,quoteFromCitizen.");
-  return NextResponse.json(news);
+  const file = await generateViaNeurovault<ForbiddenFile>(
+    "Generate one forbidden 2161 government file formatted as a classified news leak.",
+    seedForbiddenFiles[0]
+  );
+  return NextResponse.json(file);
 }

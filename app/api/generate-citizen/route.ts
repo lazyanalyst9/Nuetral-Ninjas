@@ -2,6 +2,5 @@ import { NextResponse } from "next/server";
 import { generateCitizen } from "@/lib/ai";
 
 export async function POST() {
-  const result = await generateCitizen();
-  return NextResponse.json(result);
+  return NextResponse.json(await generateCitizen());
 }

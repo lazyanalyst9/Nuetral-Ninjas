@@ -2,8 +2,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AFTERLIFE_2126",
-  description: "A recovered archive from the future internet.",
+  title: "NEUROVAULT_2161",
+  description: "Recovered illegal AI consciousness archive from the year 2161.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

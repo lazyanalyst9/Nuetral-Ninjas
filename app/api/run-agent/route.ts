@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { mockRunAgent } from "@/lib/integrations";
+import { runPipeShiftAgent } from "@/lib/pipeshift";
 
 export async function POST(req: NextRequest) {
   const { task, payload } = await req.json();
-  const result = await mockRunAgent(task, payload);
+  const result = await runPipeShiftAgent(task, payload);
   return NextResponse.json(result);
 }
